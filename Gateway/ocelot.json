@@ -1,0 +1,139 @@
+﻿{
+  "GlobalConfiguration": {
+    "BaseUrl" : "https://localhost:7057"
+  },
+  "Routes": [
+    {
+      "UpstreamPathTemplate": "/authentication-api/registration",
+      "UpstreamHttpMethod": ["POST"],
+      "DownstreamPathTemplate": "/authentication/registration",
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 7179
+        }
+      ]
+    },
+    {
+      "UpstreamPathTemplate": "/authentication-api/token",
+      "UpstreamHttpMethod": ["POST"],
+      "DownstreamPathTemplate": "/connect/token",
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 7179
+        }
+      ]
+    },
+    {
+      "UpstreamPathTemplate": "/survey-api/surveys",
+      "UpstreamHttpMethod": ["GET", "POST"],
+      "DownstreamPathTemplate": "/api/surveys",
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 7017
+        }
+      ]
+    },
+    {
+      "UpstreamPathTemplate": "/survey-api/surveys/{id}",
+      "UpstreamHttpMethod": ["GET", "DELETE", "PATCH"],
+      "DownstreamPathTemplate": "/api/surveys/{id}",
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 7017
+        }
+      ]
+    },
+    {
+      "UpstreamPathTemplate": "/survey-person-options-api/surveys/{surveyId}/surveyperson",
+      "UpstreamHttpMethod": ["GET", "POST"],
+      "DownstreamPathTemplate": "/api/surveys/{surveyId}/surveyperson",
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 7073
+        }
+      ]
+    },
+    {
+      "UpstreamPathTemplate": "/survey-person-options-api/surveys/{surveyId}/surveyperson/{id}",
+      "UpstreamHttpMethod": ["PATCH", "DELETE"],
+      "DownstreamPathTemplate": "/api/surveys/{surveyId}/surveyperson/{id}",
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 7073
+        }
+      ]
+    },
+    {
+      "UpstreamPathTemplate": "/answers-api/surveys/{surveyId}/answers",
+      "UpstreamHttpMethod": ["GET", "POST"],
+      "DownstreamPathTemplate": "/api/surveys/{surveyId}/answers",
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 7119
+        }
+      ]
+    },
+    {
+      "UpstreamPathTemplate": "/answers-api/surveys/{surveyId}/answers/{page}",
+      "UpstreamHttpMethod": ["GET"],
+      "DownstreamPathTemplate": "/api/surveys/{surveyId}/answers/{page}",
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 7119
+        }
+      ]
+    },
+    {
+      "UpstreamPathTemplate": "/statistics-api/surveys/{surveyId}/statistics",
+      "UpstreamHttpMethod": ["GET"],
+      "DownstreamPathTemplate": "/api/surveys/{surveyId}/statistics",
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 7182
+        }
+      ]
+    },
+    {
+      "UpstreamPathTemplate": "/persons-api/persons",
+      "UpstreamHttpMethod": ["POST"],
+      "DownstreamPathTemplate": "/api/persons",
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 7120
+        }
+      ]
+    },
+    {
+      "UpstreamPathTemplate": "/persons-api/persons/{id}",
+      "UpstreamHttpMethod": ["GET", "PATCH", "DELETE"],
+      "DownstreamPathTemplate": "/api/persons/{id}",
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 7120
+        }
+      ]
+    }
+  ]
+}
