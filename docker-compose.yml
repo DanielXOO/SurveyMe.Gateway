@@ -5,22 +5,22 @@ services:
       - "5060:80"
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
-  sql-server:
+  survey-api-db:
     image: mcr.microsoft.com/mssql/server
     ports:
-      - "1433:80"
+      - "1430:1433"
     environment:
     - ACCEPT_EULA=Y
-    - SA_PASSWORD=Survey_Api2022
+    - MSSQL_SA_PASSWORD=Survey_Api2022
   rabbitmq:
     image: rabbitmq
     ports:
-        - 5672:80
-        - 15672:80
-  redis:
+        - 5672:5672
+        - 15672:5672
+  survey-api-cache:
     image: redis
     ports:
-      - '6379:80'
+      - '6379:6379'
   survey-api:
     build: ./../SurveyMe.SurveysApi/
     ports:
@@ -33,7 +33,38 @@ services:
       - "5050:80"
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
-  mongo:
+  person-api-db:
     image: mongo
     ports:
       - "27017:80"
+  statistics-api-db:
+    image: postgres
+    environment:
+      POSTGRES_DB: "StatisticsDb"
+      POSTGRES_USER: "StatisticsApi"
+      POSTGRES_PASSWORD: "StatisticsApi_2022"
+    ports:
+      - "5430:5432"
+  statistics-api:
+    build: ./../SurveyMe.StatisticsApi/
+    ports:
+      - "5077:80"
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+  answers-api:
+    build: ./../SurveyMe.AnswersApi/
+    ports:
+      - "5007:80"
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+  answers-api-cache:
+      image: redis
+      ports:
+        - '6370:6370'
+  answers-api-db:
+    image: mcr.microsoft.com/mssql/server
+    ports:
+      - "1439:1433"
+    environment:
+    - ACCEPT_EULA=Y
+    - MSSQL_SA_PASSWORD=Answers_Api2022
