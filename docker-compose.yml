@@ -8,7 +8,6 @@ services:
 
   survey-api-db:
     image: mcr.microsoft.com/mssql/server
-    restart: always
     ports:
       - "1430:1430"
     environment:
@@ -17,20 +16,17 @@ services:
 
   rabbitmq:
     image: rabbitmq
-    restart: always
     ports:
         - 5672:5672
         - 15672:15672
 
   survey-api-cache:
     image: redis
-    restart: always
     ports:
       - '6379:6379'
 
   survey-api:
     build: ./../SurveyMe.SurveysApi/
-    restart: always
     ports:
       - "5067:80"
     environment:
@@ -38,7 +34,6 @@ services:
 
   person-api:
     build: ./../SurveyMe.PersonApi/
-    restart: always
     ports:
       - "5050:80"
     environment:
@@ -46,13 +41,11 @@ services:
 
   person-api-db:
     image: mongo
-    restart: always
     ports:
       - "27017:80"
 
   statistics-api-db:
     image: postgres
-    restart: always
     environment:
       POSTGRES_DB: "StatisticsDb"
       POSTGRES_USER: "StatisticsApi"
@@ -62,7 +55,6 @@ services:
 
   statistics-api:
     build: ./../SurveyMe.StatisticsApi/
-    restart: always
     ports:
       - "5077:80"
     environment:
@@ -70,7 +62,6 @@ services:
 
   answers-api:
     build: ./../SurveyMe.AnswersApi/
-    restart: always
     ports:
       - "5007:80"
     environment:
@@ -78,13 +69,12 @@ services:
 
   answers-api-cache:
       image: redis
-      restart: always
+       
       ports:
         - '6370:6370'
 
   answers-api-db:
     image: mcr.microsoft.com/mssql/server
-    restart: always
     ports:
       - "1431:1431"
     environment:
@@ -93,7 +83,6 @@ services:
 
   authentication-api:
     build: ./../SurveyMe.AuthenticationApi/
-    restart: always
     ports:
       - "5001:80"
     environment:
@@ -101,7 +90,6 @@ services:
 
   authentication-api-db:
     image: mcr.microsoft.com/mssql/server
-    restart: always
     ports:
       - "1433:1433"
     environment:
