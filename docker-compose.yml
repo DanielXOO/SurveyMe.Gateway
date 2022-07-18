@@ -7,9 +7,9 @@ services:
       - ASPNETCORE_ENVIRONMENT=Development
 
   survey-api-db:
-    image: mcr.microsoft.com/mssql/server
+    image: mcr.microsoft.com/mssql/server:2019-latest
     ports:
-      - "1430:1430"
+      - "1403:1433"
     environment:
     - ACCEPT_EULA=Y
     - MSSQL_SA_PASSWORD=Survey_Api2022
@@ -29,8 +29,13 @@ services:
     build: ./../SurveyMe.SurveysApi/
     ports:
       - "5067:80"
+    depends_on:
+      - "survey-api-db"
+      - "survey-api-cache"
+      - "rabbitmq"
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
+      - ConnectionString=Server=survey-api-db;Database=SurveyDb;User=SA;Password=Survey_Api2022
 
   person-api:
     build: ./../SurveyMe.PersonApi/
@@ -57,6 +62,9 @@ services:
     build: ./../SurveyMe.StatisticsApi/
     ports:
       - "5077:80"
+    depends_on:
+      - "statistics-api-db"
+      - "rabbitmq"
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
 
@@ -64,8 +72,13 @@ services:
     build: ./../SurveyMe.AnswersApi/
     ports:
       - "5007:80"
+    depends_on:
+      - "answers-api-db"
+      - "rabbitmq"
+      - "answers-api-cache"
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
+      - ConnectionString=Server=answers-api-db;Database=AnswersDb;User=SA;Password=Answers_Api2022
 
   answers-api-cache:
       image: redis
@@ -74,9 +87,9 @@ services:
         - '6370:6370'
 
   answers-api-db:
-    image: mcr.microsoft.com/mssql/server
+    image: mcr.microsoft.com/mssql/server:2019-latest
     ports:
-      - "1431:1431"
+      - "1401:1433"
     environment:
     - ACCEPT_EULA=Y
     - MSSQL_SA_PASSWORD=Answers_Api2022
@@ -85,13 +98,35 @@ services:
     build: ./../SurveyMe.AuthenticationApi/
     ports:
       - "5001:80"
+    depends_on:
+      - "authentication-api-db"
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
+      - ConnectionString=Server=authentication-api-db;Database=UsersDb;User=SA;Password=Authentication_Api2022
 
   authentication-api-db:
-    image: mcr.microsoft.com/mssql/server
+    image: mcr.microsoft.com/mssql/server:2019-latest
     ports:
-      - "1433:1433"
+      - "1402:1433"
     environment:
     - ACCEPT_EULA=Y
     - MSSQL_SA_PASSWORD=Authentication_Api2022
+
+  survey-person-options-api:
+    build: ./../SurveyMe.AuthenticationApi/
+    ports:
+      - "5017:80"
+    depends_on:
+      - "survey-person-options-api-db"
+      - "rabbitmq"
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ConnectionString=Server=survey-person-options-api-db;Database=SurveyPersonOptionsDb;User=SA;Password=SurveyPersonOptions_Api2022
+
+  survey-person-options-api-db:
+    image: mcr.microsoft.com/mssql/server:2019-latest
+    ports:
+      - "1404:1433"
+    environment:
+    - ACCEPT_EULA=Y
+    - MSSQL_SA_PASSWORD=SurveyPersonOptions_Api2022

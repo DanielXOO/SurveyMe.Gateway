@@ -1,6 +1,6 @@
 ﻿{
   "GlobalConfiguration": {
-    "BaseUrl" : "https://localhost:7057"
+    "BaseUrl" : "https://gateway:5060"
   },
   "Routes": [
     {
@@ -10,8 +10,8 @@
       "DownstreamScheme": "https",
       "DownstreamHostAndPorts": [
         {
-          "Host": "localhost",
-          "Port": 7179
+          "Host": "authentication-api",
+          "Port": 5001
         }
       ]
     },
@@ -22,8 +22,8 @@
       "DownstreamScheme": "https",
       "DownstreamHostAndPorts": [
         {
-          "Host": "localhost",
-          "Port": 7179
+          "Host": "authentication-api",
+          "Port": 5001
         }
       ]
     },
@@ -34,8 +34,8 @@
       "DownstreamScheme": "https",
       "DownstreamHostAndPorts": [
         {
-          "Host": "localhost",
-          "Port": 7017
+          "Host": "survey-api",
+          "Port": 5067
         }
       ]
     },
@@ -46,8 +46,8 @@
       "DownstreamScheme": "https",
       "DownstreamHostAndPorts": [
         {
-          "Host": "localhost",
-          "Port": 7017
+          "Host": "survey-api",
+          "Port": 5067
         }
       ]
     },
@@ -58,8 +58,8 @@
       "DownstreamScheme": "https",
       "DownstreamHostAndPorts": [
         {
-          "Host": "localhost",
-          "Port": 7073
+          "Host": "survey-person-options-api",
+          "Port": 5017
         }
       ]
     },
@@ -70,8 +70,8 @@
       "DownstreamScheme": "https",
       "DownstreamHostAndPorts": [
         {
-          "Host": "localhost",
-          "Port": 7073
+          "Host": "survey-person-options-api",
+          "Port": 5017
         }
       ]
     },
@@ -82,8 +82,8 @@
       "DownstreamScheme": "https",
       "DownstreamHostAndPorts": [
         {
-          "Host": "localhost",
-          "Port": 7119
+          "Host": "answers-api",
+          "Port": 5007
         }
       ]
     },
@@ -94,8 +94,8 @@
       "DownstreamScheme": "https",
       "DownstreamHostAndPorts": [
         {
-          "Host": "localhost",
-          "Port": 7119
+          "Host": "answers-api",
+          "Port": 5007
         }
       ]
     },
@@ -106,8 +106,8 @@
       "DownstreamScheme": "https",
       "DownstreamHostAndPorts": [
         {
-          "Host": "localhost",
-          "Port": 7182
+          "Host": "statistics-api",
+          "Port": 5077
         }
       ]
     },
@@ -118,8 +118,8 @@
       "DownstreamScheme": "https",
       "DownstreamHostAndPorts": [
         {
-          "Host": "localhost",
-          "Port": 7120
+          "Host": "person-api",
+          "Port": 5050
         }
       ]
     },
@@ -130,8 +130,8 @@
       "DownstreamScheme": "https",
       "DownstreamHostAndPorts": [
         {
-          "Host": "localhost",
-          "Port": 7120
+          "Host": "person-api",
+          "Port": 5050
         }
       ]
     }
