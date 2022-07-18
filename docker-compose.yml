@@ -67,6 +67,7 @@ services:
       - "rabbitmq"
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
+      - ConnectionString=User ID=StatisticsApi;Password=StatisticsApi_2022;Host=statistics-api-db;Database=StatisticsDb
 
   answers-api:
     build: ./../SurveyMe.AnswersApi/

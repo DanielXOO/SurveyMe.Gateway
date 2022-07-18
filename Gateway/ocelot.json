@@ -1,17 +1,14 @@
 ﻿{
-  "GlobalConfiguration": {
-    "BaseUrl" : "https://gateway:5060"
-  },
   "Routes": [
     {
       "UpstreamPathTemplate": "/authentication-api/registration",
       "UpstreamHttpMethod": ["POST"],
       "DownstreamPathTemplate": "/authentication/registration",
-      "DownstreamScheme": "https",
+      "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
           "Host": "authentication-api",
-          "Port": 5001
+          "Port": 80
         }
       ]
     },
@@ -19,11 +16,11 @@
       "UpstreamPathTemplate": "/authentication-api/token",
       "UpstreamHttpMethod": ["POST"],
       "DownstreamPathTemplate": "/connect/token",
-      "DownstreamScheme": "https",
+      "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
           "Host": "authentication-api",
-          "Port": 5001
+          "Port": 80
         }
       ]
     },
@@ -31,11 +28,11 @@
       "UpstreamPathTemplate": "/survey-api/surveys",
       "UpstreamHttpMethod": ["GET", "POST"],
       "DownstreamPathTemplate": "/api/surveys",
-      "DownstreamScheme": "https",
+      "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
           "Host": "survey-api",
-          "Port": 5067
+          "Port": 80
         }
       ]
     },
@@ -43,11 +40,11 @@
       "UpstreamPathTemplate": "/survey-api/surveys/{id}",
       "UpstreamHttpMethod": ["GET", "DELETE", "PATCH"],
       "DownstreamPathTemplate": "/api/surveys/{id}",
-      "DownstreamScheme": "https",
+      "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
           "Host": "survey-api",
-          "Port": 5067
+          "Port": 80
         }
       ]
     },
@@ -55,11 +52,11 @@
       "UpstreamPathTemplate": "/survey-person-options-api/surveys/{surveyId}/surveyperson",
       "UpstreamHttpMethod": ["GET", "POST"],
       "DownstreamPathTemplate": "/api/surveys/{surveyId}/surveyperson",
-      "DownstreamScheme": "https",
+      "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
           "Host": "survey-person-options-api",
-          "Port": 5017
+          "Port": 80
         }
       ]
     },
@@ -67,11 +64,11 @@
       "UpstreamPathTemplate": "/survey-person-options-api/surveys/{surveyId}/surveyperson/{id}",
       "UpstreamHttpMethod": ["PATCH", "DELETE"],
       "DownstreamPathTemplate": "/api/surveys/{surveyId}/surveyperson/{id}",
-      "DownstreamScheme": "https",
+      "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
           "Host": "survey-person-options-api",
-          "Port": 5017
+          "Port": 80
         }
       ]
     },
@@ -79,11 +76,11 @@
       "UpstreamPathTemplate": "/answers-api/surveys/{surveyId}/answers",
       "UpstreamHttpMethod": ["GET", "POST"],
       "DownstreamPathTemplate": "/api/surveys/{surveyId}/answers",
-      "DownstreamScheme": "https",
+      "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
           "Host": "answers-api",
-          "Port": 5007
+          "Port": 80
         }
       ]
     },
@@ -91,11 +88,11 @@
       "UpstreamPathTemplate": "/answers-api/surveys/{surveyId}/answers/{page}",
       "UpstreamHttpMethod": ["GET"],
       "DownstreamPathTemplate": "/api/surveys/{surveyId}/answers/{page}",
-      "DownstreamScheme": "https",
+      "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
           "Host": "answers-api",
-          "Port": 5007
+          "Port": 80
         }
       ]
     },
@@ -103,11 +100,11 @@
       "UpstreamPathTemplate": "/statistics-api/surveys/{surveyId}/statistics",
       "UpstreamHttpMethod": ["GET"],
       "DownstreamPathTemplate": "/api/surveys/{surveyId}/statistics",
-      "DownstreamScheme": "https",
+      "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
           "Host": "statistics-api",
-          "Port": 5077
+          "Port": 80
         }
       ]
     },
@@ -115,11 +112,11 @@
       "UpstreamPathTemplate": "/persons-api/persons",
       "UpstreamHttpMethod": ["POST"],
       "DownstreamPathTemplate": "/api/persons",
-      "DownstreamScheme": "https",
+      "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
           "Host": "person-api",
-          "Port": 5050
+          "Port": 80
         }
       ]
     },
@@ -127,11 +124,11 @@
       "UpstreamPathTemplate": "/persons-api/persons/{id}",
       "UpstreamHttpMethod": ["GET", "PATCH", "DELETE"],
       "DownstreamPathTemplate": "/api/persons/{id}",
-      "DownstreamScheme": "https",
+      "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
           "Host": "person-api",
-          "Port": 5050
+          "Port": 80
         }
       ]
     }
