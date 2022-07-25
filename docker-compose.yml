@@ -46,11 +46,12 @@ services:
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
       - ConnectionString=Server=answers-api-db;Database=AnswersDb;User=SA;Password=Answers_Api2022
+      - RedisHost=answers-api-cache
 
   answers-api-cache:
       image: redis
       ports:
-        - '6370:6370'
+        - '6370:6379'
 
   authentication-api:
     build: ./../SurveyMe.AuthenticationApi/
@@ -135,4 +136,4 @@ services:
   survey-api-cache:
     image: redis
     ports:
-      - '6379:6379'
+      - '6371:6379'
