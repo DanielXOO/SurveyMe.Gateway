@@ -1,17 +1,4 @@
 services:
-  survey-api:
-    build: ./../SurveyMe.SurveysApi/
-    ports:
-      - "5067:80"
-    restart: always
-    depends_on:
-      - "survey-api-db"
-      - "survey-api-cache"
-      - "rabbitmq"
-    environment:
-      - ASPNETCORE_ENVIRONMENT=Development
-      - ConnectionString=Server=survey-api-db;Database=SurveyDb;User=SA;Password=Survey_Api2022
-
   person-api:
     build: ./../SurveyMe.PersonApi/
     ports:
@@ -46,12 +33,11 @@ services:
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
       - ConnectionString=Server=answers-api-db;Database=AnswersDb;User=SA;Password=Answers_Api2022
-      - RedisHost=answers-api-cache
 
   answers-api-cache:
       image: redis
       ports:
-        - '6370:6379'
+        - '6370:6370'
 
   authentication-api:
     build: ./../SurveyMe.AuthenticationApi/
@@ -81,10 +67,23 @@ services:
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
 
+  survey-api:
+      build: ./../SurveyMe.SurveysApi/
+      ports:
+        - "5067:80"
+      restart: always
+      depends_on:
+        - "survey-api-db"
+        - "survey-api-cache"
+        - "rabbitmq"
+      environment:
+        - ASPNETCORE_ENVIRONMENT=Development
+        - ConnectionString=Server=survey-api-db;Database=SurveyDb;User=SA;Password=Survey_Api2022
+
   survey-api-db:
     image: mcr.microsoft.com/mssql/server:2019-latest
     ports:
-      - "1403:1433"
+      - "1903:1433"
     environment:
     - ACCEPT_EULA=Y
     - MSSQL_SA_PASSWORD=Survey_Api2022
@@ -136,4 +135,4 @@ services:
   survey-api-cache:
     image: redis
     ports:
-      - '6371:6379'
+      - '6371:6371'
