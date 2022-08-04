@@ -64,8 +64,6 @@ services:
     build: .
     ports:
       - "5060:80"
-    environment:
-      - ASPNETCORE_ENVIRONMENT=Development
 
   survey-api:
       build: ./../SurveyMe.SurveysApi/
